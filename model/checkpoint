@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\myPy\\dga_detect/model/model.tlf"
+all_model_checkpoint_paths: "E:\\myPy\\dga_detect/model/model.tlf"
