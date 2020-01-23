@@ -19,3 +19,5 @@ def generate_domains(nr_domains, seed='hereisaseeddomainthatweuse.com'):
         ret.append(seed)
 
     return ret
+
+print(generate_domains(3))
