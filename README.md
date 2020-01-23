@@ -25,7 +25,7 @@ Use tflearn to train via LSTM and AMSGrad
 
 ![tflearn](https://github.com/cckuailong/DgaDetect/blob/master/tflearn/result.png)
 
-- keras
+- keras/
 
 Use keras to train via LSTM and NAdam
 
