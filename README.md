@@ -23,7 +23,10 @@ Use dga_family and data/top-1m.csv to make the train dataset(traindata.pkl)
 
 Use tflearn to train via LSTM and AMSGrad
 
+![tflearn](https://github.com/cckuailong/DgaDetect/blob/master/tflearn/result.png)
+
 - keras
 
 Use keras to train via LSTM and NAdam
 
+![keras](https://github.com/cckuailong/DgaDetect/blob/master/keras/result.png)
