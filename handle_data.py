@@ -3,6 +3,7 @@ from datetime import datetime
 import pickle
 import os, sys, time
 import random
+import pandas as pd
 import tldextract
 
 from dga_family import banjori, corebot, cryptolocker, dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda
@@ -93,7 +94,7 @@ def gen_malicious(num_per_dga=10000):
     # simda
     simda_lengths = range(8, 32)
     segs_size = max(1, int(num_per_dga/len(simda_lengths)))
-    for simda_length in range(len(simda_lengths)):
+    for simda_length in range(10, len(simda_lengths)+10):
         domains += simda.generate_domains(segs_size,
                                           length=simda_length,
                                           tld=None,
@@ -112,10 +113,14 @@ def gen_data(force=False):
         domains, labels = gen_malicious(10000)
 
         # Get equal number of benign/malicious
-        domains += get_alexa(len(domains))
-        labels += ['benign']*len(domains)
+        mal_cnt = len(domains)
+        domains += get_alexa(mal_cnt)
+        labels += ['benign']*mal_cnt
+        rand_idx = [random.uniform(0,1) for i in labels]
+        new_df = pd.DataFrame({"label":labels, "text":domains, "rand":rand_idx})
+        new_df = new_df.sort_values(by=["rand"])
         # Data Persistent Storage
-        pickle.dump(zip(labels, domains), open(DATA_FILE, 'wb'))
+        pickle.dump(new_df[["label", "text"]], open(DATA_FILE, 'wb'))
 
 if __name__ == '__main__':
     start = time.time()
